@@ -1,4 +1,4 @@
-export const Heading = () => {
+export const Header = () => {
   return (
     <header className="flex flex-col justify-between gap-4 border-slate-800 border-b pb-6 md:flex-row md:items-end">
       <div>

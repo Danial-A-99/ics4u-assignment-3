@@ -1,4 +1,4 @@
-export const Footing = () => {
+export const Footer = () => {
   return (
     <footer className="mx-auto mt-12 w-full max-w-6xl border-slate-800 border-t px-4 py-12">
       <div className="flex flex-col items-center justify-between gap-6 md:flex-row">

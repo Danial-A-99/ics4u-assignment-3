@@ -1,40 +1,37 @@
-import { Footing, Heading } from "@ics4u-assignment-03/components";
-import { useState } from "react";
-
-type InputProps = {
-  value: number;
-  setValue: (val: number) => void;
-  id: string;
-  name: string;
-};
-
-export const Inputs = ({ value, setValue, id, name }: InputProps) => {
-  return (
-    <label className="group flex flex-col gap-1.5">
-    <span className="font-mono text-slate-500 text-xs transition group-focus-within:text-cyan-400">a-value [x³]</span>
-    <input
-      className="w-24 rounded-md border border-slate-800 bg-[#121824] px-3 py-2 text-center font-mono text-white transition focus:border-cyan-500 focus:outline-none"
-      id={id}
-      name={name}
-      onChange={(event) => setValue(Number(event.target.value))}
-      type="number"
-      value={value}
-    />
-    </label>
-  );
-};
+import { CubicInput, Footer, Header } from "@ics4u-assignment-03/components";
+import { type SyntheticEvent, useState } from "react";
 
 export const App = () => {
   const [a, setA] = useState(0);
   const [b, setB] = useState(0);
   const [c, setC] = useState(0);
+  const [d, setD] = useState(0);
+
+  const numberSubmit = (event: SyntheticEvent<HTMLFormElement>) => {
+    event.preventDefault()
+  }
+
   return (
     <div className="min-h-screen bg-[#07090e] text-slate-200 antialiased selection:bg-cyan-500/20 selection:text-cyan-300">
       <div className="mx-auto w-full max-w-6xl space-y-12 px-4 py-16">
-        <Heading />
-        <Inputs id="2" name="2" setValue={setA} value={a} />
-        <Footing />
+        <Header />
+        <section className="relative overflow-hidden rounded-xl border border-slate-800 bg-[#0b0f19] p-6 shadow-2xl">
+          <div className="absolute top-0 left-0 h-full w-1 bg-cyan-500"></div>
+          <form className="flex flex-wrap items-center justify-between gap-6" onSubmit={numberSubmit}>
+            <div className="flex flex-1 flex-wrap justify-start gap-4 sm:gap-6">
+              <CubicInput id="a" name="a-value" setValue={setA} value={a} />
+              <CubicInput id="b" name="b-value" setValue={setB} value={b} />
+              <CubicInput id="c" name="c-value" setValue={setC} value={c} />
+              <CubicInput id="d" name="d-value" setValue={setD} value={d} />
+            </div>
+          </form>
+        </section>
+        <Footer />
       </div>
+      <p>{a}</p>
+      <p>{b}</p>
+      <p>{c}</p>
+      <p>{d}</p>
     </div>
   );
 };
