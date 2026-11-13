@@ -11,19 +11,19 @@ export type Coordinate = {
 };
 
 export type Results = {
-  p: number;
-  q: number;
-  discriminant: number;
-  r1: Coordinate;
-  r2: Coordinate;
-  r3: Coordinate;
-  minimum: Coordinate;
-  maximum: Coordinate;
-  equation: string;
-  firstDerivative: string;
-  secondDerivative: string;
-  roots: string;
-  factored: string;
+  p?: number;
+  q?: number;
+  discriminant?: number;
+  r1?: Coordinate;
+  r2?: Coordinate;
+  r3?: Coordinate;
+  minimum?: Coordinate;
+  maximum?: Coordinate;
+  equation?: string;
+  firstDerivative?: string;
+  secondDerivative?: string;
+  roots?: string;
+  factored?: string;
 };
 
 export type History = Coefficients[];
