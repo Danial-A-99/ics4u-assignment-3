@@ -1,5 +1,8 @@
+import type { Coefficients } from "@ics4u-assignment-02/types";
 import { Analysis } from "./Analysis";
+import { CubicGraph } from "./CubicGraph";
 import { HistorySection } from "./HistorySection";
+import { MathFunctions } from "./MathFunctions";
 import { Summary } from "./Summary";
 
 type CubicBoxProps = {
@@ -19,46 +22,44 @@ export const CubicBox = ({ title, table, additionalClassCode }: CubicBoxProps) =
   );
 };
 
-export const CubicTable = () => {
+export const CubicTable = ({ a, b, c, d }: Coefficients) => {
+  const mathValues = MathFunctions({ a, b, c, d });
   return (
     <div className="grid grid-cols-2 gap-12">
       <CubicBox
         additionalClassCode=""
         table={
           <Analysis
-            discriminant={1}
-            maximum={{ x: 1, y: 2 }}
-            minimum={{ x: 1, y: 2 }}
-            p={4}
-            q={5}
-            r1={{ x: 1, y: 2 }}
-            r2={{ x: 1, y: 2 }}
-            r3={{ x: 1, y: 2 }}
+            discriminant={mathValues.discriminant}
+            maximum={mathValues.maximum}
+            minimum={mathValues.minimum}
+            p={mathValues.p}
+            q={mathValues.q}
+            r1={mathValues.r1}
+            r2={mathValues.r2}
+            r3={mathValues.r3}
           />
         }
         title={"01 // Analysis"}
       />
       <CubicBox
         additionalClassCode=""
-        table={<Summary equation={"2"} factored={"6"} firstDerivative={"3"} roots={"5"} secondDerivative={"4"} />}
+        table={
+          <Summary
+            equation={mathValues.equation ?? "N/A"}
+            factored={mathValues.factored ?? "No Real Factorization"}
+            firstDerivative={mathValues.firstDerivative ?? "N/A"}
+            roots={mathValues.roots ?? "N/A"}
+            secondDerivative={mathValues.secondDerivative ?? "N/A"}
+          />
+        }
         title={"02 // Summary"}
       />
       <CubicBox additionalClassCode="max-h-14" table={<HistorySection />} title={"03 // History"} />
       <CubicBox
         additionalClassCode=""
-        table={
-          <Analysis
-            discriminant={1}
-            maximum={{ x: 1, y: 2 }}
-            minimum={{ x: 1, y: 2 }}
-            p={4}
-            q={5}
-            r1={{ x: 1, y: 2 }}
-            r2={{ x: 1, y: 2 }}
-            r3={{ x: 1, y: 2 }}
-          />
-        }
-        title={"01 // Analysis"}
+        table={<CubicGraph a={a} b={b} c={c} d={d} r1={mathValues.r1} r2={mathValues.r2} r3={mathValues.r3} />}
+        title={"04 // Graph"}
       />
     </div>
   );

@@ -33,7 +33,7 @@ export const App = () => {
             />
           </form>
         </section>
-        <CubicTable />
+        <CubicTable a={a} b={b} c={c} d={d} />
         <Footer />
       </div>
       <p>{a}</p>
