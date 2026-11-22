@@ -1,16 +1,24 @@
 import { CubicInput, CubicTable, Footer, Header } from "@ics4u-assignment-03/components";
-import { type SyntheticEvent, useState } from "react";
+import { type SyntheticEvent, useEffect, useState } from "react";
 
 export const App = () => {
   const [a, setA] = useState(0);
   const [b, setB] = useState(0);
   const [c, setC] = useState(0);
   const [d, setD] = useState(0);
+  const [saveCoefficients, setSaveCoefficients] = useState(false);
+
+  useEffect(() => {
+    if (saveCoefficients) {
+      setSaveCoefficients(false);
+    }
+  });
 
   const numberSubmit = (event: SyntheticEvent<HTMLFormElement>) => {
     console.log("re-rendered");
     console.log(a, b, c, d);
     event.preventDefault();
+    setSaveCoefficients(true);
   };
 
   return (
@@ -33,13 +41,9 @@ export const App = () => {
             />
           </form>
         </section>
-        <CubicTable a={a} b={b} c={c} d={d} />
+        <CubicTable a={a} b={b} c={c} d={d} saveCoefficients={saveCoefficients} />
         <Footer />
       </div>
-      <p>{a}</p>
-      <p>{b}</p>
-      <p>{c}</p>
-      <p>{d}</p>
     </div>
   );
 };

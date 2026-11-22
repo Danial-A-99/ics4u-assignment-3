@@ -1,4 +1,3 @@
-import type { Coefficients } from "@ics4u-assignment-02/types";
 import { Analysis } from "./Analysis";
 import { CubicGraph } from "./CubicGraph";
 import { HistorySection } from "./HistorySection";
@@ -22,7 +21,15 @@ export const CubicBox = ({ title, table, additionalClassCode }: CubicBoxProps) =
   );
 };
 
-export const CubicTable = ({ a, b, c, d }: Coefficients) => {
+type CubicTableProps = {
+  a: number;
+  b: number;
+  c: number;
+  d: number;
+  saveCoefficients: boolean;
+};
+
+export const CubicTable = ({ a, b, c, d, saveCoefficients }: CubicTableProps) => {
   const mathValues = MathFunctions({ a, b, c, d });
   return (
     <div className="grid grid-cols-2 gap-12">
@@ -55,7 +62,11 @@ export const CubicTable = ({ a, b, c, d }: Coefficients) => {
         }
         title={"02 // Summary"}
       />
-      <CubicBox additionalClassCode="max-h-14" table={<HistorySection />} title={"03 // History"} />
+      <CubicBox
+        additionalClassCode="max-h-140"
+        table={<HistorySection coefficientValues={{ a, b, c, d }} saveCoefficients={saveCoefficients} />}
+        title={"03 // History"}
+      />
       <CubicBox
         additionalClassCode=""
         table={<CubicGraph a={a} b={b} c={c} d={d} r1={mathValues.r1} r2={mathValues.r2} r3={mathValues.r3} />}

@@ -87,7 +87,7 @@ export const drawGraph = ({ coefficientValues, roots, canvas }: drawGraphProps) 
   ctx.restore();
 };
 
-export const CubicGraph = ({ a, b, c, d, r1, r2, r3 }: any) => {
+export const CubicGraph = ({ a, b, c, d, r1, r2, r3 }: Coefficients & Partial<Results>) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const values = { a, b, c, d };
   const rootVals = { r1, r2, r3 };
