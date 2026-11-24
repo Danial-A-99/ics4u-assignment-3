@@ -1,5 +1,6 @@
 import { CubicInput, CubicTable, Footer, Header } from "@ics4u-assignment-03/components";
 import { type SyntheticEvent, useEffect, useState } from "react";
+import type { Coefficients } from "./types";
 
 export const App = () => {
   const [a, setA] = useState(0);
@@ -21,6 +22,13 @@ export const App = () => {
     setSaveCoefficients(true);
   };
 
+  const getCoefficients = (values:Coefficients) => {
+    setA(values.a)
+    setB(values.b)
+    setC(values.c)
+    setD(values.d)
+  }
+
   return (
     <div className="min-h-screen bg-[#07090e] text-slate-200 antialiased selection:bg-cyan-500/20 selection:text-cyan-300">
       <div className="mx-auto w-full max-w-6xl space-y-12 px-4 py-16">
@@ -41,7 +49,7 @@ export const App = () => {
             />
           </form>
         </section>
-        <CubicTable a={a} b={b} c={c} d={d} saveCoefficients={saveCoefficients} />
+        <CubicTable a={a} b={b} c={c} d={d} getCoefficients={getCoefficients} saveCoefficients={saveCoefficients} />
         <Footer />
       </div>
     </div>
