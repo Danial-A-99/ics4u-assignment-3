@@ -47,6 +47,7 @@ export const CubicTable = ({ a, b, c, d, saveCoefficients, getCoefficients }: Cu
             r1={mathValues.r1}
             r2={mathValues.r2}
             r3={mathValues.r3}
+            roots={mathValues.roots}
           />
         }
         title={"01 // Analysis"}

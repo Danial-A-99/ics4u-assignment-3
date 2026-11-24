@@ -18,7 +18,7 @@ export const AnalysisSection = ({ sectionName, displayValue, classContents, id }
   );
 };
 
-export const Analysis = ({ p, q, discriminant, r1, r2, r3, minimum, maximum }: Results) => {
+export const Analysis = ({ p, q, discriminant, r1, r2, r3, minimum, maximum, roots }: Results) => {
   return (
     <div className="space-y-1 font-mono text-xs">
       <AnalysisSection
@@ -47,13 +47,25 @@ export const Analysis = ({ p, q, discriminant, r1, r2, r3, minimum, maximum }: R
       ></AnalysisSection>
       <AnalysisSection
         classContents="text-emerald-400"
-        displayValue={Number.isFinite(r2?.x) ? `x: ${r2?.x} | y: 0.0000` : "x:  N/A | y: N/A"}
+        displayValue={
+          Number.isFinite(r2?.x)
+            ? `x: ${r2?.x} | y: 0.0000`
+            : roots === "1 Real Root, 2 Complex Roots"
+              ? `x: Imaginary | y: Imaginary`
+              : "x:  N/A | y: N/A"
+        }
         id="root-two"
         sectionName="[r2] root beta"
       ></AnalysisSection>
       <AnalysisSection
         classContents="text-emerald-400"
-        displayValue={Number.isFinite(r3?.x) ? `x: ${r3?.x} | y: 0.0000` : "x:  N/A | y: N/A"}
+        displayValue={
+          Number.isFinite(r3?.x)
+            ? `x: ${r3?.x} | y: 0.0000`
+            : roots === "1 Real Root, 2 Complex Roots"
+              ? `x: Imaginary | y: Imaginary`
+              : "x:  N/A | y: N/A"
+        }
         id="root-three"
         sectionName="[r3] root gamma"
       ></AnalysisSection>

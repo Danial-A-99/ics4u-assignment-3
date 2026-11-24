@@ -111,6 +111,10 @@ export const MathFunctions = ({ a, b, c, d }: Coefficients): Results => {
   const equation = writeEquation(values);
   const derivOne = firstDerivative(values);
   const derivTwo = secondDerivative(values);
+  let rootsVal = "N/A";
+  if (a !== 0) {
+    rootsVal = String(r[r.length - 1]);
+  }
   return {
     discriminant: disc,
     equation: equation,
@@ -123,7 +127,7 @@ export const MathFunctions = ({ a, b, c, d }: Coefficients): Results => {
     r1: { x: r[0], y: 0 },
     r2: { x: r[1], y: 0 },
     r3: { x: r[2], y: 0 },
-    roots: String(r[r.length - 1]),
+    roots: rootsVal,
     secondDerivative: derivTwo,
   };
 };
