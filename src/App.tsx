@@ -16,18 +16,16 @@ export const App = () => {
   });
 
   const numberSubmit = (event: SyntheticEvent<HTMLFormElement>) => {
-    console.log("re-rendered");
-    console.log(a, b, c, d);
     event.preventDefault();
     setSaveCoefficients(true);
   };
 
-  const getCoefficients = (values:Coefficients) => {
-    setA(values.a)
-    setB(values.b)
-    setC(values.c)
-    setD(values.d)
-  }
+  const getCoefficients = (values: Coefficients) => {
+    setA(values.a);
+    setB(values.b);
+    setC(values.c);
+    setD(values.d);
+  };
 
   return (
     <div className="min-h-screen bg-[#07090e] text-slate-200 antialiased selection:bg-cyan-500/20 selection:text-cyan-300">

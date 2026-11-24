@@ -24,7 +24,6 @@ export const AddToHistory = ({ coefficientValues, locationInList, onDelete, getC
       </button>
       <button
         className="rounded-lg border border-red-500/30 bg-red-500/10 px-3 py-2 font-medium text-red-400 text-xs transition hover:bg-red-500/20 hover:text-red-300"
-        id={"delete" + locationInList}
         onClick={() => onDelete(locationInList)}
       >
         Delete
@@ -57,14 +56,10 @@ export const HistorySection = ({ coefficientValues, saveCoefficients, getCoeffic
         }
         if (!existsInList) {
           const addedItemList = { a, b, c, d };
-          console.log("hola");
-          console.log(coefficientValues);
           setInputList([...inputList, addedItemList]);
         }
       } else {
         const addedItemList = { a, b, c, d };
-        console.log("hola");
-        console.log(coefficientValues);
         setInputList([...inputList, addedItemList]);
       }
       console.log(inputList);
